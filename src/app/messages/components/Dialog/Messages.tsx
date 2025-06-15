@@ -1,11 +1,19 @@
-import { Avatar } from '@/components/ui/avatar'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { cn } from '@/lib/utils'
-import React from 'react'
+import React, { RefObject } from 'react'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { Check, CheckCheck } from 'lucide-react'
-import { formatTime } from '../utils'
+import { Message } from '@/types'
 
-export default function Messages() {
+
+interface MessagesProps {
+    conversationMessages: Message[]
+    currentUser: { id: string }
+    messagesEndRef: RefObject<HTMLDivElement | null>
+    formatTime: (date: string) => string
+}
+
+export default function Messages({ conversationMessages, currentUser, messagesEndRef, formatTime }: MessagesProps) {
     return (
         <>
             <ScrollArea className="flex-1 p-6">
@@ -15,8 +23,11 @@ export default function Messages() {
                         const showAvatar = index === 0 || conversationMessages[index - 1].senderId !== message.senderId
                         const showTime =
                             index === conversationMessages.length - 1 ||
-                            new Date(conversationMessages[index + 1].createdAt).getTime() - new Date(message.createdAt).getTime() >
-                            300000
+                            (() => {
+                                const nextMessage = conversationMessages[index + 1];
+                                if (!nextMessage?.createdAt || !message.createdAt) return false;
+                                return new Date(nextMessage.createdAt).getTime() - new Date(message.createdAt).getTime() > 300000;
+                            })()
 
                         return (
                             <div
@@ -25,9 +36,9 @@ export default function Messages() {
                             >
                                 {!isOwn && showAvatar && (
                                     <Avatar className="h-8 w-8 ring-2 ring-primary/20">
-                                        <AvatarImage src={message.sender.avatar || "/placeholder.svg"} alt={message.sender.name} />
+                                        <AvatarImage src={message.sender?.avatar || "/placeholder.svg"} alt={message.sender?.name || "User"} />
                                         <AvatarFallback className="bg-gradient-to-br from-blue-400 to-purple-500 text-white text-xs">
-                                            {message.sender.name.charAt(0)}
+                                            {message.sender?.name?.charAt(0) || "U"}
                                         </AvatarFallback>
                                     </Avatar>
                                 )}

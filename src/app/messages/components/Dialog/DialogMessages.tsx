@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
@@ -8,6 +8,8 @@ import { Search } from "lucide-react"
 import { Textarea } from "@/components/ui/textarea"
 import { Plus } from "lucide-react"
 export default function DialogMessages() {
+    const [searchQuery, setSearchQuery] = useState("")
+
     return (
         <>
             <div className="p-6 border-b border-white/10">

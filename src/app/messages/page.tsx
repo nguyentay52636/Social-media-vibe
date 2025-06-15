@@ -9,7 +9,41 @@ import InputMessage from "./components/InputMessage"
 import Messages from "./components/Dialog/Messages"
 import HeaderMessages from "./components/HeaderMessages"
 
+// Mock data - replace with actual data from your backend
+const currentUser = {
+    id: "1",
+    name: "Current User",
+    avatar: "/avatars/default.png",
+    email: "user@example.com"
+}
 
+const conversations = [
+    {
+        id: "1",
+        participants: [
+            currentUser,
+            { id: "2", name: "User 2", avatar: "/avatars/user2.png" }
+        ],
+        unreadCount: 0,
+        isArchived: false,
+        isPinned: false
+    }
+]
+
+const messageHistory = [
+    {
+        id: "1",
+        conversationId: "1",
+        senderId: "1",
+        receiverId: "2",
+        sender: currentUser,
+        content: "Hello!",
+        type: "text" as const,
+        createdAt: new Date().toISOString(),
+        isRead: true,
+        reactions: []
+    }
+]
 
 export default function MessagesPage() {
     const [selectedConversation, setSelectedConversation] = useState(conversations[0])
@@ -29,23 +63,25 @@ export default function MessagesPage() {
         scrollToBottom()
     }, [messages])
 
-    // const handleSendMessage = () => {
-    //     if (newMessage.trim()) {
-    //         const message = {
-    //             id: Date.now().toString(),
-    //             conversationId: selectedConversation.id,
-    //             senderId: currentUser.id,
-    //             sender: currentUser,
-    //             content: newMessage,
-    //             type: "text" as const,
-    //             createdAt: new Date().toISOString(),
-    //             isRead: false,
-    //             reactions: [],
-    //         }
-    //         setMessages((prev) => [...prev, message])
-    //         setNewMessage("")
-    //     }
-    // }
+    const handleSendMessage = () => {
+        if (newMessage.trim()) {
+            const otherUser = selectedConversation.participants.find((p) => p.id !== currentUser.id)
+            const message = {
+                id: Date.now().toString(),
+                conversationId: selectedConversation.id,
+                senderId: currentUser.id,
+                receiverId: otherUser?.id || "",
+                sender: currentUser,
+                content: newMessage,
+                type: "text" as const,
+                createdAt: new Date().toISOString(),
+                isRead: false,
+                reactions: [],
+            }
+            setMessages((prev) => [...prev, message])
+            setNewMessage("")
+        }
+    }
 
     const handleKeyPress = (e: React.KeyboardEvent) => {
         if (e.key === "Enter" && !e.shiftKey) {
@@ -99,7 +135,7 @@ export default function MessagesPage() {
                 <DialogMessages />
 
                 {/* Tabs */}
-                <TabsMessages />
+                <TabsMessages currentUser={currentUser} />
             </div>
 
             {/* Main Chat Area */}
@@ -108,10 +144,21 @@ export default function MessagesPage() {
                 <HeaderMessages />
 
                 {/* Messages */}
-                <Messages />
+                <Messages
+                    conversationMessages={conversationMessages}
+                    currentUser={currentUser}
+                    messagesEndRef={messagesEndRef}
+                    formatTime={formatTime}
+                />
 
                 {/* Message Input */}
-                <InputMessage />
+                <InputMessage
+                    handleFileUpload={handleFileUpload}
+                    newMessage={newMessage}
+                    setNewMessage={setNewMessage}
+                    handleKeyPress={handleKeyPress}
+                    handleSendMessage={handleSendMessage}
+                />
             </div>
 
             {/* Hidden file input */}

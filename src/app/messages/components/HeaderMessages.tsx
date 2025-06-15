@@ -3,6 +3,23 @@ import React from 'react'
 import { Button } from '@/components/ui/button'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { Star, Archive, Trash2, Phone, Video, MoreVertical } from 'lucide-react'
+import { formatTime } from '@/utils/utils'
+
+// Sample data
+const otherUser = {
+    name: "Nguyễn Văn A",
+    avatar: "/placeholder.svg",
+    lastSeen: new Date(Date.now() - 1000 * 60 * 30), // 30 minutes ago
+}
+
+const selectedConversation = {
+    isOnline: true,
+    isTyping: false,
+    isPinned: false,
+}
+
+// Format time function
+
 
 export default function HeaderMessages() {
     return (

@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button'
 import { Smile, Mic, Send, Paperclip, ImageIcon } from 'lucide-react'
 import { Textarea } from '@/components/ui/textarea'
 
-export default function InputMessage() {
+export default function InputMessage({ handleFileUpload, newMessage, setNewMessage, handleKeyPress, handleSendMessage }: { handleFileUpload: () => void, newMessage: string, setNewMessage: (value: string) => void, handleKeyPress: (e: React.KeyboardEvent) => void, handleSendMessage: () => void }) {
     return (
         <>
             <div className="p-6 border-t border-white/10 glass-effect">
