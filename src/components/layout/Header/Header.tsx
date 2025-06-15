@@ -85,7 +85,7 @@ export function Header() {
                             <DropdownMenuItem>
                                 <div className="flex items-center space-x-3">
                                     <Avatar className="w-8 h-8">
-                                        <AvatarImage src="/placeholder.svg?height=32&width=32&text=A" />
+                                        <AvatarImage src="https://avatars.githubusercontent.com/u/124599?v=4" />
                                         <AvatarFallback>A</AvatarFallback>
                                     </Avatar>
                                     <div className="flex-1">
@@ -97,7 +97,7 @@ export function Header() {
                             <DropdownMenuItem>
                                 <div className="flex items-center space-x-3">
                                     <Avatar className="w-8 h-8">
-                                        <AvatarImage src="/placeholder.svg?height=32&width=32&text=B" />
+                                        <AvatarImage src="https://avatars.githubusercontent.com/u/124599?v=4" />
                                         <AvatarFallback>B</AvatarFallback>
                                     </Avatar>
                                     <div className="flex-1">
@@ -122,7 +122,7 @@ export function Header() {
                         <DropdownMenuTrigger asChild>
                             <Button variant="ghost" className="relative h-8 w-8 rounded-full">
                                 <Avatar className="h-8 w-8">
-                                    <AvatarImage src="/placeholder.svg?height=32&width=32&text=U" alt="User" />
+                                    <AvatarImage src="https://avatars.githubusercontent.com/u/124599?v=4" alt="User" />
                                     <AvatarFallback>U</AvatarFallback>
                                 </Avatar>
                             </Button>

@@ -1,8 +1,4 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
-## Getting Started
-
-First, run the development server:
+Xây dựng social media - vibe 
 
 ```bash
 npm run dev
@@ -13,5 +9,6 @@ pnpm dev
 # or
 bun dev
 
-Feature-based Folder Structure npm run build npm run start
+Feature-based Folder Structure
+ npm run build npm run start
 
