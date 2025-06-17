@@ -1,9 +1,8 @@
+"use client"
+
 import { useState, useEffect } from "react"
-import { Phone, PhoneOff, Mic, MicOff, Video, VideoOff, Volume2 } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+
 import type { Call } from "@/types"
 import UserAvatar from "./components/UserAvatar"
 import CallInfo from "./components/CallInfo"

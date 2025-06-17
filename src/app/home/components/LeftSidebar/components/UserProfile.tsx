@@ -2,12 +2,13 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { CardContent } from '@/components/ui/card'
 import { Card } from '@/components/ui/card'
 import React from 'react'
+import { User } from '@/types'
 
 
 
-export default function UserProfile() {
+export default function UserProfile({ user }: { user: User }) {
     return (
-        <div className="">
+        <div >
             <Card>
                 <CardContent className="p-6">
                     <div className="text-center space-y-4">

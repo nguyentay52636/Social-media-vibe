@@ -3,8 +3,9 @@ import MainContent from './MainContent/MainContent'
 import LeftSidebar from './LeftSidebar/LeftSidebar'
 import RightSideBar from './RightSidebar/RightSideBar'
 import { cn } from '@/lib/utils'
+import { User } from '@/types'
 
-export default function CorePage({ sidebarCollapsed }: { sidebarCollapsed: boolean }) {
+export default function CorePage({ sidebarCollapsed, onlineUsers }: { sidebarCollapsed: boolean, onlineUsers: User[] }) {
     return (
         <div className="container mx-auto px-4 py-6 max-w-none">
             <div
@@ -13,7 +14,7 @@ export default function CorePage({ sidebarCollapsed }: { sidebarCollapsed: boole
                     sidebarCollapsed ? "grid-cols-1 xl:grid-cols-10 lg:grid-cols-8" : "grid-cols-1 lg:grid-cols-12",
                 )}
             >
-                <LeftSidebar sidebarCollapsed={sidebarCollapsed} />
+                <LeftSidebar sidebarCollapsed={sidebarCollapsed} onlineUsers={onlineUsers} />
                 <MainContent sidebarCollapsed={sidebarCollapsed} />
                 <RightSideBar sidebarCollapsed={sidebarCollapsed} />
             </div>

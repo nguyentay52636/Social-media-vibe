@@ -3,9 +3,13 @@ import { CardHeader } from '@/components/ui/card'
 import { Card } from '@/components/ui/card'
 import React from 'react'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { Button } from '@/components/ui/button'         
+import { Button } from '@/components/ui/button'
+import { User } from '@/types'
 
-export default function OnlineFriendsPreview() {
+export default function OnlineFriendsPreview({ onlineUsers }: { onlineUsers: User[] }) {
+    const handleStartChat = (user: User) => {
+        console.log(user)
+    }
     return (
         <div className="">
             <Card>
