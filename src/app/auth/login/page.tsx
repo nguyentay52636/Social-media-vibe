@@ -49,17 +49,7 @@ export default function LoginPage() {
                 <div className="absolute top-20 right-20 w-32 h-32 bg-green-200/30 rounded-full blur-xl" />
                 <div className="absolute bottom-40 left-10 w-24 h-24 bg-emerald-300/40 rounded-full blur-lg" />
 
-                {/* Logo */}
-                <div className="absolute top-8 left-8 z-10">
-                    <div className="flex items-center space-x-2">
-                        <div className="w-10 h-10 bg-gradient-to-br from-pink-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
-                            <Star className="w-6 h-6 text-white" />
-                        </div>
-                        <span className="text-2xl font-bold text-gray-800">
-                            Social<span className="text-pink-500">Vibe</span>
-                        </span>
-                    </div>
-                </div>
+
 
                 {/* Hero Content */}
                 <div className="flex flex-col justify-center px-12 z-10 max-w-lg">
