@@ -5,8 +5,9 @@ import { Textarea } from '@/components/ui/textarea'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { X, ImageIcon, Users, Smile, MapPin, Loader2 } from 'lucide-react'
+import ActionsCreatPost from './ActionsCreatPost'
 
-export default function ContentCreatePost({ isExpanded, setIsExpanded, content, setContent, handleFocus, handleCancel, handleSubmit, handleFileSelect, removeAttachment, attachments, isSubmitting, fileInputRef }: { isExpanded: boolean, setIsExpanded: (isExpanded: boolean) => void, content: string, setContent: (content: string) => void, handleFocus: () => void, handleCancel: () => void, handleSubmit: () => void, handleFileSelect: (e: React.ChangeEvent<HTMLInputElement>) => void, removeAttachment: (index: number) => void, attachments: { type: "image" | "video"; url: string }[], isSubmitting: boolean, fileInputRef: React.RefObject<HTMLInputElement> }) {
+export default function ContentCreatePost({ isExpanded, setIsExpanded, content, setContent, handleFocus, handleCancel, handleSubmit, handleFileSelect, removeAttachment, attachments, isSubmitting, fileInputRef }: { isExpanded: boolean, setIsExpanded: (isExpanded: boolean) => void, content: string, setContent: (content: string) => void, handleFocus: () => void, handleCancel: () => void, handleSubmit: () => void, handleFileSelect: (e: React.ChangeEvent<HTMLInputElement>) => void, removeAttachment: (index: number) => void, attachments: { type: "image" | "video"; url: string }[], isSubmitting: boolean, fileInputRef: React.RefObject<HTMLInputElement | null> }) {
 
 
     return (
@@ -56,59 +57,7 @@ export default function ContentCreatePost({ isExpanded, setIsExpanded, content, 
                             </div>
                         )}
 
-                        <div className="mt-4 flex flex-wrap items-center justify-between gap-2">
-                            <div className="flex flex-wrap gap-2">
-                                <Button
-                                    variant="ghost"
-                                    size="sm"
-                                    className="text-green-500"
-                                    onClick={() => fileInputRef.current?.click()}
-                                >
-                                    <ImageIcon className="h-4 w-4 mr-2" />
-                                    Ảnh
-                                </Button>
-                                <input
-                                    type="file"
-                                    ref={fileInputRef}
-                                    accept="image/*,video/*"
-                                    multiple
-                                    className="hidden"
-                                    onChange={handleFileSelect}
-                                />
-                                <Button variant="ghost" size="sm" className="text-blue-500">
-                                    <Users className="h-4 w-4 mr-2" />
-                                    Gắn thẻ
-                                </Button>
-                                <Button variant="ghost" size="sm" className="text-yellow-500">
-                                    <Smile className="h-4 w-4 mr-2" />
-                                    Cảm xúc
-                                </Button>
-                                <Button variant="ghost" size="sm" className="text-red-500">
-                                    <MapPin className="h-4 w-4 mr-2" />
-                                    Vị trí
-                                </Button>
-                            </div>
-
-                            <div className="flex gap-2 ml-auto">
-                                <Button variant="outline" size="sm" onClick={handleCancel}>
-                                    Hủy
-                                </Button>
-                                <Button
-                                    size="sm"
-                                    onClick={handleSubmit}
-                                    disabled={(!content.trim() && attachments.length === 0) || isSubmitting}
-                                >
-                                    {isSubmitting ? (
-                                        <>
-                                            <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                                            Đang đăng...
-                                        </>
-                                    ) : (
-                                        "Đăng"
-                                    )}
-                                </Button>
-                            </div>
-                        </div>
+                        <ActionsCreatPost fileInputRef={fileInputRef} handleFileSelect={handleFileSelect} handleCancel={handleCancel} handleSubmit={handleSubmit} content={content} attachments={attachments} isSubmitting={isSubmitting} />
                     </>
                 )}
 

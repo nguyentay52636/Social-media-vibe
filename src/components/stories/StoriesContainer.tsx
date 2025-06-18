@@ -45,7 +45,7 @@ export function StoriesContainer({ stories }: StoriesContainerProps) {
     const visibleStories = enhancedStories.slice(currentIndex, currentIndex + 4)
 
     return (
-        <Card className="p-4 w-[900px]! flex justify-space-between items-center">
+        <Card className="p-4 flex justify-space-between items-center">
             <PaginationStories currentIndex={currentIndex} totalStories={stories.length} nextStories={nextStories} prevStories={prevStories} />
             <div className=" gap-2 flex justify-space-between space-x-4 overflow-x-auto pb-2">
                 {/* Create Story */}
