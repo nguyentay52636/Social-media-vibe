@@ -12,7 +12,7 @@ interface PaginationStoriesProps {
 
 export default function PaginationStories({ currentIndex, totalStories, prevStories, nextStories }: PaginationStoriesProps) {
     return (
-        <div className="flex items-center justify-space-between mb-4">
+        <div className="flex items-center justify-between mb-4">
             <h3 className="font-semibold text-lg">Stories</h3>
             <div className="flex space-x-2">
                 <Button variant="outline" size="icon" className="h-8 w-8" onClick={prevStories} disabled={currentIndex === 0}>
