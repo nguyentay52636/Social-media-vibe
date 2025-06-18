@@ -1,7 +1,7 @@
 "use client"
 
 import { Sidebar } from "@/components/layout/SiderBar/siderbar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import Introduction from "./components/Introduction/Introduction";
 import CorePage from "./components/CorePage";
@@ -18,11 +18,18 @@ export default function Home() {
     }
     const onlineUsers = users.filter((u) => u.isOnline)
 
+    useEffect(() => {
+        const handleSidebarToggle = (e: any) => {
+            setSidebarCollapsed(e.detail.collapsed);
+        };
+        window.addEventListener("sidebarToggle", handleSidebarToggle);
+        return () => window.removeEventListener("sidebarToggle", handleSidebarToggle);
+    }, []);
 
     return (
-        <div className="min-h-screen bg-background">
-    ,<SideBar>
-  <div
+        <div className="min-h-screen bg-background flex">
+            <Sidebar />
+            <div
                 className={cn("flex-1 transition-all duration-500 ease-in-out", sidebarCollapsed ? "lg:ml-20" : "lg:ml-80")}
             >
                 {false ? (
@@ -35,9 +42,6 @@ export default function Home() {
                     <CallInterface call={activeCall} onEndCall={handleEndCall} onToggleMic={() => { }} onToggleVideo={() => { }} />
                 )}
             </div>
-    </SideBar>
-          
-
         </div>
     );
 }

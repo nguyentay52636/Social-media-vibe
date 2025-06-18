@@ -1,32 +1,22 @@
 "use client"
 
-import { useState } from "react"
 import { Card } from "@/components/ui/card"
+import Slider from "react-slick"
+import "slick-carousel/slick/slick.css"
+import "slick-carousel/slick/slick-theme.css"
 
 import type { Story } from "@/types"
-import { currentUser, users } from "@/lib/mock-data"
+import { users } from "@/lib/mock-data"
 import CreateStory from "./components/CreateStory"
 import ListStory from "./components/ListStory"
-import PaginationStories from "./components/PaginationStories"
 
 interface StoriesContainerProps {
     stories: Story[]
 }
 
 export function StoriesContainer({ stories }: StoriesContainerProps) {
-    const [currentIndex, setCurrentIndex] = useState(0)
-
-    const nextStories = () => {
-        setCurrentIndex((prev) => Math.min(prev + 4, stories.length - 4))
-    }
-
-    const prevStories = () => {
-        setCurrentIndex((prev) => Math.max(prev - 4, 0))
-    }
-
     // Đảm bảo stories có đủ dữ liệu
     const enhancedStories = stories.map((story) => {
-        // Nếu story không có user, tìm user từ userId
         if (!story.user && story.userId) {
             const user = users.find((u) => u.id === story.userId)
             return {
@@ -42,20 +32,50 @@ export function StoriesContainer({ stories }: StoriesContainerProps) {
         return story
     })
 
-    const visibleStories = enhancedStories.slice(currentIndex, currentIndex + 4)
+    // Cấu hình slider
+    const settings = {
+        dots: false,
+        infinite: enhancedStories.length > 4,
+        speed: 500,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        arrows: true,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                },
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                },
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                },
+            },
+        ],
+    }
 
     return (
-        <Card className="p-4 flex justify-space-between items-center">
-            <PaginationStories currentIndex={currentIndex} totalStories={stories.length} nextStories={nextStories} prevStories={prevStories} />
-            <div className=" gap-2 flex justify-space-between space-x-4 overflow-x-auto pb-2">
+        <Card className="p-4 ">
+            <Slider {...settings} className="stories-slider flex items-center">
                 {/* Create Story */}
-                <CreateStory onClick={() => { }} />
-
+                <div>
+                    <CreateStory onClick={() => { }} />
+                </div>
                 {/* Stories */}
-                {visibleStories.map((story) => (
-                    <ListStory key={story.id} story={story} onClick={() => { }} />
+                {enhancedStories.map((story) => (
+                    <div key={story.id}>
+                        <ListStory story={story} onClick={() => { }} />
+                    </div>
                 ))}
-            </div>
+            </Slider>
         </Card>
     )
 }
