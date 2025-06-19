@@ -5,12 +5,13 @@ import SocialMediaLink from './components/SocialMediaLink'
 import QuickStatsCards from './components/QuickStatsCards'
 import RecentPhoto from './components/RecentPhoto'
 import ImageProfile from './components/ImageProfile'
+import TabsMainContent from './components/TabsMainContent/TabsMainContent'
 
-export default function ProfileHeader() {
+export default function ProfileHeader({ profileData, userPosts, userPhotos, setShowImageSelector }: { profileData: any, userPosts: any, userPhotos: any, setShowImageSelector: any }) {
 
   return (
     <div className="container mx-auto px-6">
-      <ImageProfile profileData={profileData} setShowImageSelector={setShowImageSelector} />
+      <ImageProfile profileData={profileData} setShowImageSelector={setShowImageSelector} onClose={() => setShowImageSelector(null)} />
 
       {/* Quick Stats Cards */}
       <QuickStatsCards profileData={profileData} />
@@ -33,7 +34,7 @@ export default function ProfileHeader() {
         </div>
 
         {/* Main Content */}
-       
+        <TabsMainContent profileData={profileData} userPosts={userPosts} userPhotos={userPhotos} setShowImageSelector={setShowImageSelector} />
       </div>
     </div>
   )

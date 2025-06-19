@@ -1,7 +1,7 @@
 import { CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import PostCard from '@/components/post/components/CardPost/PostCard'
 import { Card } from '@/components/ui/card'
-import React from 'react'
+import React, { useState } from 'react'
 import { TabsContent } from '@radix-ui/react-tabs'
 import { Button } from '@/components/ui/button'
 import { Label } from '@/components/ui/label'
@@ -10,6 +10,16 @@ import { formatBirthday, formatDate } from '@/utils/utils'
 import { Calendar, Clock, Star, Award, Briefcase, GraduationCap, Grid3X3, Plus, Check } from 'lucide-react'
 
 export default function TabsMainContentBody({ userPosts, profileData, userPhotos, setShowImageSelector }: { userPosts: any, profileData: any, userPhotos: any, setShowImageSelector: any }) {
+    const [selectedImages, setSelectedImages] = useState<string[]>([]);
+
+    const toggleImageSelection = (url: string) => {
+        setSelectedImages((prev) =>
+            prev.includes(url)
+                ? prev.filter((img) => img !== url)
+                : [...prev, url]
+        );
+    };
+
     return (
         <>
             <TabsContent value="posts" className="space-y-6 animate-fade-in">
@@ -119,7 +129,7 @@ export default function TabsMainContentBody({ userPosts, profileData, userPhotos
                                             src={photo.url || "/placeholder.svg"}
                                             alt={photo.caption}
                                             className="w-full aspect-square rounded-xl cursor-pointer"
-                                            onClick={() => setShowImageSelector("avatar")}
+                                            onClick={() => toggleImageSelection(photo.url)}
                                         />
                                         {selectedImages.includes(photo.url) && (
                                             <div className="absolute inset-0 bg-black/20 rounded-xl flex items-center justify-center">
@@ -149,7 +159,7 @@ export default function TabsMainContentBody({ userPosts, profileData, userPhotos
                             </CardTitle>
                         </CardHeader>
                         <CardContent className="space-y-6">
-                            {profileData.workExperience.map((work, index) => (
+                            {profileData.workExperience.map((work: any, index: any) => (
                                 <div key={index} className="flex space-x-4">
                                     <div className="flex-shrink-0">
                                         <div className="h-12 w-12 bg-gradient-to-br from-primary to-pink-500 rounded-xl flex items-center justify-center">
@@ -179,7 +189,7 @@ export default function TabsMainContentBody({ userPosts, profileData, userPhotos
                             </CardTitle>
                         </CardHeader>
                         <CardContent className="space-y-6">
-                            {profileData.education.map((edu, index) => (
+                            {profileData.education.map((edu: any, index: any) => (
                                 <div key={index} className="flex space-x-4">
                                     <div className="flex-shrink-0">
                                         <div className="h-12 w-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl flex items-center justify-center">
@@ -211,7 +221,7 @@ export default function TabsMainContentBody({ userPosts, profileData, userPhotos
                         </CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-6">
-                        {profileData.achievements.map((achievement, index) => (
+                        {profileData.achievements.map((achievement: any, index: any) => (
                             <div key={index} className="flex space-x-4">
                                 <div className="flex-shrink-0">
                                     <div className="h-12 w-12 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-xl flex items-center justify-center">

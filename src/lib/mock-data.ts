@@ -763,3 +763,57 @@ export const mockPosts = posts
 export const mockUsers = users
 export const mockConversations = conversations
 export const mockNotifications = notifications
+
+
+
+
+export const userPhotos = [
+  {
+    id: "1",
+    url: "/placeholder.svg?height=300&width=300&text=Photo+1",
+    caption: "Chuyến du lịch Hạ Long",
+    date: "2024-05-20T15:30:00Z",
+    likes: 45,
+    comments: 12,
+  },
+  {
+    id: "2",
+    url: "/placeholder.svg?height=300&width=300&text=Photo+2",
+    caption: "Workshop công nghệ",
+    date: "2024-04-15T10:00:00Z",
+    likes: 32,
+    comments: 8,
+  },
+  {
+    id: "3",
+    url: "/placeholder.svg?height=300&width=300&text=Photo+3",
+    caption: "Sinh nhật lần thứ 29",
+    date: "2024-03-15T18:45:00Z",
+    likes: 78,
+    comments: 25,
+  },
+  {
+    id: "4",
+    url: "/placeholder.svg?height=300&width=300&text=Photo+4",
+    caption: "Hackathon 2024",
+    date: "2024-02-10T14:20:00Z",
+    likes: 56,
+    comments: 15,
+  },
+  {
+    id: "5",
+    url: "/placeholder.svg?height=300&width=300&text=Photo+5",
+    caption: "Team building",
+    date: "2024-01-25T11:30:00Z",
+    likes: 34,
+    comments: 9,
+  },
+  {
+    id: "6",
+    url: "/placeholder.svg?height=300&width=300&text=Photo+6",
+    caption: "Dự án mới",
+    date: "2024-01-10T16:15:00Z",
+    likes: 67,
+    comments: 18,
+  },
+]

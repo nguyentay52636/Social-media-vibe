@@ -1,3 +1,4 @@
+"use client";
 import { Button } from '@/components/ui/button'
 import { Camera } from 'lucide-react'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
@@ -5,8 +6,10 @@ import React, { useState } from 'react'
 import { MapPin, Calendar, Eye, Plus, Edit } from 'lucide-react'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import { formatDate } from '@/utils/utils'
+import DialogEditProfile from '@/components/layout/SiderBar/Profile/components/Dialog/DialogEditProfile';
 
-export default function ImageProfile({ profileData, setShowImageSelector }: { profileData: any, setShowImageSelector: any }) {
+
+export default function ImageProfile({ profileData, setShowImageSelector, onClose }: { profileData: any, setShowImageSelector: any, onClose: any }) {
     const [isEditingProfile, setIsEditingProfile] = useState(false);
 
     return (
@@ -61,7 +64,7 @@ export default function ImageProfile({ profileData, setShowImageSelector }: { pr
                                 <DialogHeader>
                                     <DialogTitle>Chỉnh sửa thông tin cá nhân</DialogTitle>
                                 </DialogHeader>
-                                <EditProfileForm onClose={() => setIsEditingProfile(false)} />
+                                <DialogEditProfile />
                             </DialogContent>
                         </Dialog>
 

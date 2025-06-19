@@ -13,7 +13,7 @@ export default function ImageSelectorModal({ profileData }: { profileData: any }
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          {profileData.skills.map((skill: any) => (
+          {(profileData.skills ?? []).map((skill: any) => (
             <div key={skill.name} className="space-y-2">
               <div className="flex items-center justify-between">
                 <span className="text-sm font-medium">{skill.name}</span>

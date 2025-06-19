@@ -20,8 +20,8 @@ export function Sidebar() {
     const [showFriendSuggestions, setShowFriendSuggestions] = useState(true)
     const user = {
         id: "1",
-        name: "Demo User",
-        avatar: "/placeholder.svg?height=40&width=40&text=DU",
+        name: "Phuong Tay",
+        avatar: "/avatar.png",
     }
 
     const toggleSidebar = () => {

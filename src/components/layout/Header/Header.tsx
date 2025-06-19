@@ -97,7 +97,7 @@ export function Header() {
                             <DropdownMenuItem>
                                 <div className="flex items-center space-x-3">
                                     <Avatar className="w-8 h-8">
-                                        <AvatarImage src="https://avatars.githubusercontent.com/u/124599?v=4" />
+                                        <AvatarImage src="/avatar.png" />
                                         <AvatarFallback>B</AvatarFallback>
                                     </Avatar>
                                     <div className="flex-1">

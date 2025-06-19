@@ -7,8 +7,8 @@ import Link from 'next/link'
 
 export default function UserMenu({ handleLogout }: { handleLogout: () => void }) {
     const currentUser = {
-        avatar: "/placeholder.svg",
-        name: "Phạm Tấn",
+        avatar: "/avatar.png",
+        name: "Phuong Tay",
     }
     return (
         <>
@@ -17,8 +17,8 @@ export default function UserMenu({ handleLogout }: { handleLogout: () => void })
                     <DropdownMenuTrigger asChild>
                         <Button variant="ghost" className="h-10 px-2 rounded-full">
                             <Avatar className="h-8 w-8">
-                                <AvatarImage src={currentUser.avatar || "/placeholder.svg"} alt={currentUser.name} />
-                                <AvatarFallback>PT</AvatarFallback>
+                                <AvatarImage src={currentUser.avatar || "/avatar.png"} alt={currentUser.name} />
+                                <AvatarFallback>Tay</AvatarFallback>
                             </Avatar>
                             <ChevronDown className="w-4 h-4 ml-1" />
                         </Button>
