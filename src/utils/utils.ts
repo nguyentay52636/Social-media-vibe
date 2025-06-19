@@ -45,3 +45,10 @@ export function generateCode(): string {
       return `${days} ngày trước`
   }
 }
+  export const formatBirthday = (dateString: string) => {
+  return new Date(dateString).toLocaleDateString("vi-VN", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  })
+}
