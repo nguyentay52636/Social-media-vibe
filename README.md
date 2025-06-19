@@ -1,3 +1,7 @@
+# Social Media Vibe
+
+![Social Media Vibe](public/social-media.jpg)
+
 Xây dựng social media - vibe 
 
 ```bash

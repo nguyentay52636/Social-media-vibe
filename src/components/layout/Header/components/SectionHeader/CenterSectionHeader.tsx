@@ -6,7 +6,7 @@ import Link from 'next/link'
 export default function CenterSectionHeader({ navigationItems, activeTab, setActiveTab }: { navigationItems: any[], activeTab: string, setActiveTab: (tab: string) => void }) {
     return (
         <>
-            <div className="flex items-center space-x-1 lg:space-x-2">
+            <div className="flex items-center space-x-1 lg:space-x-2 justify-center">
                 {navigationItems.map((item) => (
                     <Link key={item.id} href={item.href}>
                         <Button

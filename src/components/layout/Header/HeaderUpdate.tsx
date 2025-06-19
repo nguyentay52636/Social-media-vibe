@@ -50,7 +50,7 @@ export function HeaderUpdate() {
                     <LeftSectionHeader />
 
                     {/* Center Section - Navigation (Hidden on mobile) */}
-                    <div className="hidden lg:flex">
+                    <div className="hidden lg:flex lg:justify-center">
                         <CenterSectionHeader navigationItems={navigationItems} activeTab={activeTab} setActiveTab={setActiveTab} />
                     </div>
 
