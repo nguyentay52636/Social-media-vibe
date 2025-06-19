@@ -26,7 +26,8 @@ export default function UserMenu({ handleLogout }: { handleLogout: () => void })
                     <DropdownMenuContent className="w-80 p-0" align="end" forceMount>
                         {/* User Profile Section */}
                         <div className="p-4 border-b">
-                            <div className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer">
+                          <Link href="/profile"> 
+                          <div className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer">
                                 <Avatar className="h-12 w-12">
                                     <AvatarImage src={currentUser.avatar || "/placeholder.svg"} alt={currentUser.name} />
                                     <AvatarFallback>PT</AvatarFallback>
@@ -35,6 +36,7 @@ export default function UserMenu({ handleLogout }: { handleLogout: () => void })
                                     <p className="font-semibold">{currentUser.name}</p>
                                 </div>
                             </div>
+                          </Link>
 
                             <Button variant="outline" className="w-full mt-3 justify-start" asChild>
                                 <Link href="/profile">

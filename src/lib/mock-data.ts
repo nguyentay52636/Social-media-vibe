@@ -4,17 +4,24 @@ import type { Post, User, Message, Notification, Story, Event, Comment } from "@
 export const users: User[] = [
   {
     id: "1",
-    name: "Nguyễn Văn An",
-    username: "annguyen",
+    name: "Phuong Tay ",
+    avatar: "/avatar.png",
+    coverPhoto: "/dancer-bg.gif",
     email: "an.nguyen@example.com",
-    avatar: "/placeholder.svg?height=40&width=40&text=NVA",
-    coverPhoto: "/placeholder.svg?height=400&width=1200&text=Cover+Photo",
+  
     bio: "Nhiếp ảnh gia, yêu thích du lịch và khám phá ẩm thực mới.",
     location: "Hà Nội, Việt Nam",
     workplace: "Công ty ABC",
     education: "Đại học Bách Khoa Hà Nội",
     followers: 1245,
     following: 356,
+     stats: {
+            profileViews: 1000,
+            totalLikes: 100,
+            totalComments: 50,
+            postViews: 2000,
+            friendsCount: 100,
+        },
     photos: 89,
     isOnline: true,
     interests: ["Nhiếp ảnh", "Du lịch", "Ẩm thực", "Công nghệ"],
@@ -33,6 +40,13 @@ export const users: User[] = [
     education: "Đại học Sư phạm TP.HCM",
     followers: 876,
     following: 234,
+    stats: {
+      profileViews: 800,
+      totalLikes: 80,
+      totalComments: 40,
+      postViews: 1500,
+      friendsCount: 80,
+    },
     photos: 45,
     isOnline: true,
     interests: ["Sách", "Yoga", "Giáo dục", "Ngoại ngữ"],
@@ -51,6 +65,13 @@ export const users: User[] = [
     education: "Đại học Công nghệ",
     followers: 2345,
     following: 178,
+    stats: {
+      profileViews: 1200,
+      totalLikes: 150,
+      totalComments: 60,
+      postViews: 2500,
+      friendsCount: 120,
+    },
     photos: 32,
     isOnline: true,
     interests: ["Công nghệ", "AI", "Lập trình", "Đọc sách"],
@@ -69,6 +90,13 @@ export const users: User[] = [
     education: "Đại học Kinh tế Quốc dân",
     followers: 987,
     following: 432,
+    stats: {
+      profileViews: 900,
+      totalLikes: 90,
+      totalComments: 45,
+      postViews: 1800,
+      friendsCount: 90,
+    },
     photos: 67,
     isOnline: false,
     interests: ["Marketing", "Âm nhạc", "Nấu ăn", "Thời trang"],
@@ -87,6 +115,13 @@ export const users: User[] = [
     education: "Đại học Kiến trúc Hà Nội",
     followers: 654,
     following: 321,
+    stats: {
+      profileViews: 700,
+      totalLikes: 70,
+      totalComments: 35,
+      postViews: 1200,
+      friendsCount: 70,
+    },
     photos: 98,
     isOnline: false,
     interests: ["Kiến trúc", "Nghệ thuật", "Thiết kế", "Du lịch"],
@@ -105,6 +140,13 @@ export const users: User[] = [
     education: "Đại học Y Dược TP.HCM",
     followers: 1432,
     following: 267,
+    stats: {
+      profileViews: 1100,
+      totalLikes: 110,
+      totalComments: 55,
+      postViews: 2100,
+      friendsCount: 110,
+    },
     photos: 54,
     isOnline: false,
     interests: ["Y học", "Âm nhạc cổ điển", "Piano", "Đọc sách"],
@@ -767,7 +809,80 @@ export const mockNotifications = notifications
 
 
 
-export const userPhotos = [
+export const profileData = {
+  ...currentUser,
+  coverPhoto: "/placeholder.svg?height=300&width=800&text=Cover+Photo",
+  birthday: "1995-03-15",
+  gender: "Nam",
+  relationship: "Độc thân",
+  hometown: "Hà Nội, Việt Nam",
+  languages: ["Tiếng Việt", "English", "日本語"],
+  interests: ["Công nghệ", "Du lịch", "Nhiếp ảnh", "Âm nhạc", "Thể thao"],
+  education: [
+    {
+      school: "Đại học Bách Khoa Hà Nội",
+      degree: "Kỹ sư Công nghệ Thông tin",
+      year: "2013-2017",
+      description: "Chuyên ngành Phát triển phần mềm",
+    },
+    {
+      school: "Trường THPT Chu Văn An",
+      degree: "Tốt nghiệp THPT",
+      year: "2010-2013",
+      description: "Lớp chuyên Toán",
+    },
+  ],
+  workExperience: [
+    {
+      company: "Tech Solutions Vietnam",
+      position: "Senior Full-stack Developer",
+      period: "2020 - Hiện tại",
+      description: "Phát triển và duy trì các ứng dụng web quy mô lớn sử dụng React, Node.js và MongoDB.",
+    },
+    {
+      company: "StartupXYZ",
+      position: "Frontend Developer",
+      period: "2018 - 2020",
+      description: "Xây dựng giao diện người dùng cho ứng dụng mobile và web.",
+    },
+  ],
+  achievements: [
+    {
+      title: "Nhân viên xuất sắc năm 2023",
+      organization: "Tech Solutions Vietnam",
+      date: "2023-12-01",
+      description: "Được công nhận vì đóng góp xuất sắc trong dự án phát triển hệ thống ERP.",
+    },
+    {
+      title: "Giải nhất Hackathon 2022",
+      organization: "Vietnam Tech Community",
+      date: "2022-08-15",
+      description: "Đội phát triển ứng dụng AI cho giáo dục.",
+    },
+  ],
+  skills: [
+    { name: "React", level: 95 },
+    { name: "Node.js", level: 90 },
+    { name: "TypeScript", level: 88 },
+    { name: "Python", level: 85 },
+    { name: "MongoDB", level: 82 },
+    { name: "AWS", level: 78 },
+  ],
+  socialLinks: [
+    { platform: "GitHub", url: "https://github.com/nguyenvanan", icon: "🐙" },
+    { platform: "LinkedIn", url: "https://linkedin.com/in/nguyenvanan", icon: "💼" },
+    { platform: "Twitter", url: "https://twitter.com/nguyenvanan", icon: "🐦" },
+  ],
+  stats: {
+    profileViews: 1250,
+    postViews: 15600,
+    totalLikes: 3420,
+    totalComments: 890,
+  },
+}
+
+// Mẫu ảnh cho gallery
+ export const userPhotos = [
   {
     id: "1",
     url: "/placeholder.svg?height=300&width=300&text=Photo+1",

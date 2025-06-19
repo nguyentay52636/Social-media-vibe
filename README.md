@@ -2,6 +2,7 @@
 
 ![Social Media Vibe](public/social-media.jpg)
 
+![Social Media Vibe](public/bg-2.jpg)
 Xây dựng social media - vibe 
 
 ```bash

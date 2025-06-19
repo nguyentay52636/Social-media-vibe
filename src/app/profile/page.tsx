@@ -5,38 +5,12 @@ import ProfileHeader from './components/componentsPage/ProfileHeader/ProfileHead
 import ChatBubble from './components/componentsPage/ChatBubble'
 import { Button } from '@/components/ui/button'
 import { MessageCircle } from 'lucide-react'
-import { posts, userPhotos } from '@/lib/mock-data'
+import { posts, profileData, userPhotos, currentUser } from '@/lib/mock-data'
 
 export default function page() {
     const [showChatBubble, setShowChatBubble] = useState(false)
     const [showImageSelector, setShowImageSelector] = useState<"cover" | "avatar" | null>(null)
-    const profileData = {
-        name: "Phuong Tay ",
-        avatar: "/avatar.png",
-        coverPhoto: "/dancer-bg.gif",
-        stats: {
-            profileViews: 1000,
-            totalLikes: 100,
-            totalComments: 50,
-            postViews: 2000,
-            friendsCount: 100,
-        },
-        skills: [
-            { name: "ReactJS", level: 80 },
-            { name: "NodeJS", level: 70 }
-        ],
-        socialLinks: [],
-        gender: '',
-        birthday: '',
-        relationship: '',
-        hometown: '',
-        location: '',
-        languages: [],
-        interests: [],
-        workExperience: [],
-        education: [],
-        achievements: [],
-    }
+
     return (
         <div className="min-h-screen bg-background">
             {/* Cover Photo */}
@@ -45,7 +19,7 @@ export default function page() {
             <ProfileHeader profileData={profileData} userPosts={posts} userPhotos={userPhotos} setShowImageSelector={setShowImageSelector} />
             {/* Chat Bubble */}
             {showChatBubble && (
-                <ChatBubble profileData={profileData} setShowImageSelector={(selector: string) => setShowImageSelector(selector as "cover" | "avatar")} />
+                <ChatBubble profileData={profileData as any} currentUser={currentUser as any} setShowChatBubble={setShowChatBubble} />
             )}
             <Button
                 onClick={() => setShowChatBubble(!showChatBubble)}

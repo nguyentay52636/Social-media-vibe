@@ -16,10 +16,12 @@ interface CoverPhotoProps {
 }
 
 export default function CoverPhoto({ profileData, setShowImageSelector }: CoverPhotoProps) {
+    console.log('coverPhoto:', profileData.coverPhoto);
+
     return (
         <div className="relative h-[400px] w-full">
             <img
-                src={profileData.coverPhoto || "/placeholder.svg?height=400&width=1200&text=Cover+Photo"}
+                src="https://images.unsplash.com/photo-1506744038136-46273834b3fb"
                 alt="Cover"
                 className="w-full h-full object-cover"
             />
