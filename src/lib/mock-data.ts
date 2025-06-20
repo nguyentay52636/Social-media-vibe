@@ -1,4 +1,4 @@
-import type { Post, User, Message, Notification, Story, Event, Comment } from "@/types"
+import type { Post, User, Message, Notification, Story, Event, Comment, FriendRequest } from "@/types"
 
 // Mock Users
 export const users: User[] = [
@@ -158,14 +158,14 @@ export const users: User[] = [
 export const currentUser: User = users[0] // Sử dụng user đầu tiên làm current user
 
 // Mock Friend Requests
-export const friendRequests = [
+export const friendRequests: FriendRequest[] = [
   {
     id: "1",
     senderId: "5",
     sender: users[4],
     receiverId: "1",
     receiver: currentUser,
-    status: "pending",
+    status: "pending" as const,
     createdAt: "2024-06-10T09:00:00Z",
   },
   {
@@ -174,7 +174,7 @@ export const friendRequests = [
     sender: users[3],
     receiverId: "1",
     receiver: currentUser,
-    status: "pending",
+    status: "pending" as const,
     createdAt: "2024-06-10T08:30:00Z",
   },
   {
@@ -183,7 +183,7 @@ export const friendRequests = [
     sender: users[5],
     receiverId: "1",
     receiver: currentUser,
-    status: "pending",
+    status: "pending" as const,
     createdAt: "2024-06-09T14:45:00Z",
   },
 ]
@@ -878,6 +878,7 @@ export const profileData = {
     postViews: 15600,
     totalLikes: 3420,
     totalComments: 890,
+    friendsCount: 156,
   },
 }
 

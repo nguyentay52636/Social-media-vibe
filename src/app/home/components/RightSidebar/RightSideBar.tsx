@@ -60,7 +60,14 @@ export default function RightSideBar({ sidebarCollapsed }: { sidebarCollapsed: b
             sender: {
                 id: "1",
                 name: "Current User",
-                email: "current@example.com"
+                email: "current@example.com",
+                stats: {
+                    profileViews: 0,
+                    totalLikes: 0,
+                    totalComments: 0,
+                    postViews: 0,
+                    friendsCount: 0,
+                },
             }
         }
         setChatMessages(prev => [...prev, newMessage])

@@ -6,9 +6,10 @@ import ChatBubble from './components/componentsPage/ChatBubble'
 import { Button } from '@/components/ui/button'
 import { MessageCircle } from 'lucide-react'
 import { posts, profileData, userPhotos, currentUser } from '@/lib/mock-data'
-
+import { ImageSelectionModal } from '@/components/layout/SiderBar/Profile/ImageSelectionModal'
 export default function page() {
     const [showChatBubble, setShowChatBubble] = useState(false)
+    const [selectedImages, setSelectedImages] = useState<string[]>([])
     const [showImageSelector, setShowImageSelector] = useState<"cover" | "avatar" | null>(null)
 
     return (
@@ -27,7 +28,19 @@ export default function page() {
             >
                 <MessageCircle className="h-6 w-6" />
             </Button>
+            {/* Image Selector Modal */}
+            {showImageSelector && (
+                <ImageSelectionModal
+                    type={showImageSelector}
+                    onClose={() => setShowImageSelector(null)}
+                    onSelect={(images) => {
+                        setSelectedImages(images)
+                        setShowImageSelector(null)
+                    }}
+                />
+            )}
 
         </div>
     )
 }
+
