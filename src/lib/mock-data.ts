@@ -772,42 +772,11 @@ export const comments: Comment[] = [
   },
 ]
 
-// Mock Friend Suggestions
-export const friendSuggestions = [
-  {
-    id: "11",
-    name: "Đỗ Thị Lan",
-    avatar: "/placeholder.svg?height=40&width=40&text=DTL",
-    mutualFriends: 8,
-    workplace: "Công ty ABC",
-    isOnline: true,
-  },
-  {
-    id: "12",
-    name: "Bùi Văn Nam",
-    avatar: "/placeholder.svg?height=40&width=40&text=BVN",
-    mutualFriends: 5,
-    education: "Đại học Bách Khoa",
-    isOnline: false,
-  },
-  {
-    id: "13",
-    name: "Lý Thị Hoa",
-    avatar: "/placeholder.svg?height=40&width=40&text=LTH",
-    mutualFriends: 12,
-    location: "Hà Nội",
-    isOnline: true,
-  },
-]
-
 // Backward compatibility exports
 export const mockPosts = posts
 export const mockUsers = users
 export const mockConversations = conversations
 export const mockNotifications = notifications
-
-
-
 
 export const profileData = {
   ...currentUser,
@@ -883,7 +852,7 @@ export const profileData = {
 }
 
 // Mẫu ảnh cho gallery
- export const userPhotos = [
+export const userPhotos = [
   {
     id: "1",
     url: "/placeholder.svg?height=300&width=300&text=Photo+1",
@@ -931,5 +900,99 @@ export const profileData = {
     date: "2024-01-10T16:15:00Z",
     likes: 67,
     comments: 18,
+  },
+]
+
+// Mock Friend Suggestions
+export const friendSuggestions = [
+  {
+    id: "11",
+    name: "Đỗ Thị Lan",
+    avatar: "/placeholder.svg?height=100&width=100&text=DTL",
+    bio: "Marketing Manager | Yêu thích du lịch và ẩm thực",
+    location: "Hà Nội, Việt Nam",
+    workplace: "Công ty TNHH ABC",
+    education: "Đại học Ngoại thương",
+    mutualFriends: 8,
+    mutualFriendsNames: ["Nguyễn Văn A", "Trần Thị B", "Lê Văn C"],
+    isOnline: true,
+    reason: "Cùng làm việc tại Công ty TNHH ABC",
+    friendsCount: 245,
+    postsCount: 89,
+  },
+  {
+    id: "12",
+    name: "Bùi Văn Nam",
+    avatar: "/placeholder.svg?height=100&width=100&text=BVN",
+    bio: "Software Engineer | Đam mê công nghệ và game",
+    location: "TP.HCM, Việt Nam",
+    workplace: "FPT Software",
+    education: "Đại học Bách Khoa TP.HCM",
+    mutualFriends: 5,
+    mutualFriendsNames: ["Phạm Văn D", "Hoàng Thị E"],
+    isOnline: false,
+    reason: "Cùng học tại Đại học Bách Khoa TP.HCM",
+    friendsCount: 156,
+    postsCount: 67,
+  },
+  {
+    id: "13",
+    name: "Lý Thị Hoa",
+    avatar: "/placeholder.svg?height=100&width=100&text=LTH",
+    bio: "Giáo viên tiểu học | Yêu thích đọc sách và âm nhạc",
+    location: "Hà Nội, Việt Nam",
+    workplace: "Trường Tiểu học Kim Liên",
+    education: "Đại học Sư phạm Hà Nội",
+    mutualFriends: 12,
+    mutualFriendsNames: ["Nguyễn Thị F", "Trần Văn G", "Lê Thị H"],
+    isOnline: true,
+    reason: "Sống gần bạn",
+    friendsCount: 198,
+    postsCount: 134,
+  },
+  {
+    id: "14",
+    name: "Trịnh Văn Đức",
+    avatar: "/placeholder.svg?height=100&width=100&text=TVD",
+    bio: "Kỹ sư xây dựng | Thích thể thao và du lịch",
+    location: "Đà Nẵng, Việt Nam",
+    workplace: "Công ty Xây dựng Hòa Bình",
+    education: "Đại học Xây dựng",
+    mutualFriends: 3,
+    mutualFriendsNames: ["Phạm Thị I"],
+    isOnline: false,
+    reason: "Bạn của bạn bè",
+    friendsCount: 87,
+    postsCount: 45,
+  },
+  {
+    id: "15",
+    name: "Võ Thị Mai",
+    avatar: "/placeholder.svg?height=100&width=100&text=VTM",
+    bio: "Nhà thiết kế đồ họa | Sáng tạo không giới hạn",
+    location: "TP.HCM, Việt Nam",
+    workplace: "Studio Design Creative",
+    education: "Đại học Mỹ thuật TP.HCM",
+    mutualFriends: 7,
+    mutualFriendsNames: ["Nguyễn Văn J", "Trần Thị K"],
+    isOnline: true,
+    reason: "Cùng sở thích thiết kế",
+    friendsCount: 312,
+    postsCount: 156,
+  },
+  {
+    id: "16",
+    name: "Phan Minh Tuấn",
+    avatar: "/placeholder.svg?height=100&width=100&text=PMT",
+    bio: "Bác sĩ nội khoa | Quan tâm đến sức khỏe cộng đồng",
+    location: "Hà Nội, Việt Nam",
+    workplace: "Bệnh viện Bạch Mai",
+    education: "Đại học Y Hà Nội",
+    mutualFriends: 6,
+    mutualFriendsNames: ["Lê Văn L", "Hoàng Thị M"],
+    isOnline: false,
+    reason: "Cùng ngành nghề y tế",
+    friendsCount: 234,
+    postsCount: 78,
   },
 ]
