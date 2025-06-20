@@ -16,12 +16,6 @@ import {
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Badge } from "@/components/ui/badge"
-import { Input } from "@/components/ui/input"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import {
     Dialog,
     DialogContent,
@@ -37,6 +31,7 @@ import UnfriendDialog from "./components/Dialog/UnfriendDialog"
 import MainContentFriends from "./components/MainContentFriends"
 import HeaderFriends from "./components/HeaderFriends"
 import SearchAndFilters from "./components/SearchAndFilters"
+import BLockFriends from "./components/Dialog/BLockFriends"
 
 type FriendsPageProps = {}
 
@@ -223,25 +218,12 @@ export default function FriendsPage({ }: FriendsPageProps) {
             />
 
             {/* Block Dialog */}
-            <Dialog open={showBlockDialog} onOpenChange={setShowBlockDialog}>
-                <DialogContent>
-                    <DialogHeader>
-                        <DialogTitle>Chặn người dùng</DialogTitle>
-                        <DialogDescription>
-                            Bạn có chắc chắn muốn chặn <strong>{selectedFriend?.name}</strong>? Họ sẽ không thể tìm thấy trang cá nhân
-                            của bạn hoặc liên hệ với bạn.
-                        </DialogDescription>
-                    </DialogHeader>
-                    <DialogFooter>
-                        <Button variant="outline" onClick={() => setShowBlockDialog(false)}>
-                            Hủy
-                        </Button>
-                        <Button variant="destructive" onClick={handleBlock}>
-                            Chặn
-                        </Button>
-                    </DialogFooter>
-                </DialogContent>
-            </Dialog>
+            <BLockFriends
+                showBlockDialog={showBlockDialog}
+                setShowBlockDialog={setShowBlockDialog}
+                selectedFriend={selectedFriend}
+                handleBlock={handleBlock}
+            />
         </div>
     )
 }
