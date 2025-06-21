@@ -15,9 +15,13 @@ import {
     DialogHeader,
     DialogTitle,
 } from "@/components/ui/dialog"
-import { Alert, AlertDescription } from "@/components/ui/alert"
-import type { User } from "@/types"
 
+import type { User } from "@/types"
+import HeaderTitleBlocked from "./components/HeaderTitleBlocked"
+import InfoAleftBlocked from "./components/InfoAleftBlocked"
+import ActionsBlocked from "./components/ActionsBlocked"
+import BlockedUsersList from "./components/BlockedUsersList"
+import DIalogUnblocked from "./components/Dialog/DIalogUnblocked"
 // Mock blocked users data
 const blockedUsers: User[] = [
     {
@@ -75,37 +79,13 @@ export default function BlockedUsersPage() {
     return (
         <div className="container mx-auto px-4 py-6 max-w-4xl">
             {/* Header */}
-            <div className="mb-8">
-                <h1 className="text-3xl font-bold flex items-center gap-3">
-                    <Shield className="h-8 w-8 text-red-500" />
-                    Người dùng đã chặn
-                </h1>
-                <p className="text-muted-foreground mt-2">Quản lý danh sách những người bạn đã chặn</p>
-            </div>
+            <HeaderTitleBlocked />
 
             {/* Info Alert */}
-            <Alert className="mb-6">
-                <AlertTriangle className="h-4 w-4" />
-                <AlertDescription>
-                    Những người bạn chặn sẽ không thể tìm thấy trang cá nhân của bạn, gửi tin nhắn hoặc tương tác với bài viết của
-                    bạn.
-                </AlertDescription>
-            </Alert>
+            <InfoAleftBlocked />
 
             {/* Search */}
-            <Card className="mb-6">
-                <CardContent className="p-4">
-                    <div className="relative">
-                        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                        <Input
-                            placeholder="Tìm kiếm người đã chặn..."
-                            value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
-                            className="pl-10"
-                        />
-                    </div>
-                </CardContent>
-            </Card>
+            <ActionsBlocked />
 
             {/* Blocked Users List */}
             {filteredBlocked.length > 0 ? (
@@ -164,39 +144,11 @@ export default function BlockedUsersPage() {
                     ))}
                 </div>
             ) : (
-                <Card>
-                    <CardContent className="p-12 text-center">
-                        <Shield className="h-16 w-16 mx-auto text-muted-foreground mb-4" />
-                        <h3 className="text-lg font-semibold mb-2">
-                            {searchQuery ? "Không tìm thấy người dùng nào" : "Chưa chặn ai"}
-                        </h3>
-                        <p className="text-muted-foreground">
-                            {searchQuery ? "Thử tìm kiếm với từ khóa khác" : "Khi bạn chặn ai đó, họ sẽ xuất hiện ở đây"}
-                        </p>
-                    </CardContent>
-                </Card>
+                <BlockedUsersList />
             )}
 
             {/* Unblock Dialog */}
-            <Dialog open={showUnblockDialog} onOpenChange={setShowUnblockDialog}>
-                <DialogContent>
-                    <DialogHeader>
-                        <DialogTitle>Bỏ chặn người dùng</DialogTitle>
-                        <DialogDescription>
-                            Bạn có chắc chắn muốn bỏ chặn <strong>{selectedUser?.name}</strong>? Họ sẽ có thể tìm thấy trang cá nhân
-                            của bạn và tương tác với bạn trở lại.
-                        </DialogDescription>
-                    </DialogHeader>
-                    <DialogFooter>
-                        <Button variant="outline" onClick={() => setShowUnblockDialog(false)}>
-                            Hủy
-                        </Button>
-                        <Button onClick={handleUnblock} className="bg-green-600 hover:bg-green-700">
-                            Bỏ chặn
-                        </Button>
-                    </DialogFooter>
-                </DialogContent>
-            </Dialog>
+            <DIalogUnblocked showUnblockDialog={showUnblockDialog} setShowUnblockDialog={setShowUnblockDialog} selectedUser={selectedUser} handleUnblock={handleUnblock} />
         </div>
     )
 }
