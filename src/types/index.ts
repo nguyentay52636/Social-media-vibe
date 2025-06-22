@@ -21,6 +21,19 @@ export interface User {
     lastSeen?: string
     website?: string
     joinDate?: string
+    notifications?: {
+      likes: boolean
+      comments: boolean
+      messages: boolean
+      friendRequests: boolean
+      events: boolean
+    }
+    privacy?: {
+      profileVisibility: string
+      postVisibility: string
+      friendListVisibility: string
+      onlineStatus: boolean
+    }
   }
   
   export interface Post {
