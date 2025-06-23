@@ -1077,3 +1077,33 @@ export const sentRequests: FriendRequest[] = [
       createdAt: "2024-06-08T15:20:00Z",
   },
 ]
+export const savedArticles = [
+  {
+      id: "1",
+      title: "10 xu hướng thiết kế UI/UX năm 2024",
+      excerpt: "Khám phá những xu hướng thiết kế giao diện người dùng mới nhất đang định hình ngành công nghiệp",
+      source: "UX Planet",
+      author: {
+          name: "Minh Trần",
+          avatar: "/placeholder.svg?height=40&width=40&text=MT",
+      },
+      image: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fpicsum.photos%2F&psig=AOvVaw0eIRbd0_lxQq917x9g8FoK&ust=1750792667563000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCNC1j66hiI4DFQAAAAAdAAAAABAE",
+      savedAt: "2024-05-28T14:20:00Z",
+      category: "Design",
+      readTime: "8 phút đọc",
+  },
+  {
+      id: "2",
+      title: "Hướng dẫn toàn diện về React Server Components",
+      excerpt: "Tìm hiểu cách React Server Components hoạt động và cách tích hợp chúng vào ứng dụng của bạn",
+      source: "Dev.to",
+      author: {
+          name: "Hùng Nguyễn",
+          avatar: "/placeholder.svg?height=40&width=40&text=HN",
+      },
+      image: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fhatrabbits.com%2Fen%2Frandom-image%2F&psig=AOvVaw0eIRbd0_lxQq917x9g8FoK&ust=1750792667563000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCNC1j66hiI4DFQAAAAAdAAAAABAJ",
+      savedAt: "2024-05-25T09:15:00Z",
+      category: "Technology",
+      readTime: "12 phút đọc",
+  },
+]

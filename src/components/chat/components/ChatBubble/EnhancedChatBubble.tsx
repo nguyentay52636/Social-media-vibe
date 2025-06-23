@@ -139,10 +139,20 @@ export function EnhancedChatBubble({ chat, onClose, onMinimize, onSendMessage, p
                 style={{ right: 10, bottom: 2 }}
             >
                 {/* Header */}
-                <HeaderMessagerBubble chat={chat} onMinimize={onMinimize} onClose={onClose} />
+                <HeaderMessagerBubble
+                    chat={{
+                        avatar: chat.avatar,
+                        name: chat.name,
+                        isOnline: chat.isOnline,
+                        isTyping: chat.isTyping ?? false,
+                        lastSeen: chat.lastSeen ?? ""
+                    }}
+                    onMinimize={onMinimize}
+                    onClose={onClose}
+                />
 
                 {/* Messages */}
-                <MessageBubble chat={chat} />
+                <MessagesBubble chat={{ messages: chat.messages }} />
 
                 {/* Reply indicator */}
                 {replyingTo && (
@@ -158,7 +168,16 @@ export function EnhancedChatBubble({ chat, onClose, onMinimize, onSendMessage, p
                 )}
 
                 {/* Message Input */}
-                <MessageInput handleSendMessage={handleSendMessage} fileInputRef={fileInputRef} newMessage={newMessage} setNewMessage={setNewMessage} showEmojiPicker={showEmojiPicker} setShowEmojiPicker={setShowEmojiPicker} handleVoiceRecord={handleVoiceRecord} isRecording={isRecording} />
+                <MessageInput
+                    handleSendMessage={handleSendMessage}
+                    fileInputRef={fileInputRef as React.RefObject<HTMLInputElement>}
+                    newMessage={newMessage}
+                    setNewMessage={setNewMessage}
+                    showEmojiPicker={showEmojiPicker}
+                    setShowEmojiPicker={setShowEmojiPicker}
+                    handleVoiceRecord={handleVoiceRecord}
+                    isRecording={isRecording}
+                />
 
                 {/* Hidden file input */}
                 <input ref={fileInputRef} type="file" className="hidden" onChange={handleFileUpload} multiple />

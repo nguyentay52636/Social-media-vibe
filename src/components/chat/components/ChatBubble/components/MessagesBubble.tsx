@@ -1,10 +1,10 @@
 import React from 'react'
 import { MessageBubble } from './MessageBubble'
-import { Message } from '@/types'
+import { MessageProps } from './types'
 
 interface MessagesBubbleProps {
   chat: {
-    messages: Message[]
+    messages: MessageProps[]
   }
 }
 
@@ -27,14 +27,14 @@ export default function MessagesBubble({ chat }: MessagesBubbleProps) {
               message={message}
               isFirstInGroup={isFirstInGroup}
               isLastInGroup={isLastInGroup}
-              onReaction={handleReaction}
-              onReply={handleReply}
-              onContextMenu={handleContextMenu}
+              onReaction={() => { }}
+              onReply={() => { }}
+              onContextMenu={() => { }}
             />
           </div>
         )
       })}
-      <div ref={messagesEndRef} />
+      {/* <div ref={messagesEndRef} /> */}
     </div>
   )
 }
