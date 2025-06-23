@@ -2,15 +2,13 @@
 
 import { useState, useEffect } from "react"
 
-import { KeyboardShortcuts } from "@/components/chat/components/KeyBoardShortcuts"
-
 import SiderBarChat from "@/components/chat/components/SiderBarChat/SiderBarChat"
+import { EnhancedChatBubble } from "@/components/chat/components/ChatBubble/EnhancedChatBubble"
 
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
@@ -32,7 +30,33 @@ interface Chat {
   unreadCount: number
   hasStory: boolean
   isTyping: boolean
-  messages: any[]
+  messages: {
+    id: string
+    content: string
+    timestamp: string
+    isOwn: boolean
+    senderName: string
+    senderAvatar: string
+    hasReaction?: string
+    isImage?: boolean
+    imageUrl?: string
+    isVideo?: boolean
+    videoUrl?: string
+    isAudio?: boolean
+    audioUrl?: string
+    isFile?: boolean
+    fileName?: string
+    fileSize?: string
+    isSticker?: boolean
+    stickerUrl?: string
+    replyTo?: {
+      id: string
+      content: string
+      senderName: string
+    }
+    isRead?: boolean
+    deliveredAt?: string
+  }[]
   isGroup?: boolean
 }
 
@@ -47,7 +71,26 @@ const initialChats: Chat[] = [
     unreadCount: 0,
     hasStory: true,
     isTyping: false,
-    messages: [],
+    messages: [
+      {
+        id: "1",
+        content: "Chào bạn!",
+        timestamp: "14:30",
+        isOwn: false,
+        senderName: "Hoàng Văn E",
+        senderAvatar: "/placeholder.svg?height=28&width=28&text=HE",
+        isRead: true,
+      },
+      {
+        id: "2",
+        content: "Tôi có thể giúp gì cho bạn?",
+        timestamp: "14:31",
+        isOwn: false,
+        senderName: "Hoàng Văn E",
+        senderAvatar: "/placeholder.svg?height=28&width=28&text=HE",
+        isRead: true,
+      },
+    ],
   },
   {
     id: "2",
@@ -59,7 +102,17 @@ const initialChats: Chat[] = [
     unreadCount: 0,
     hasStory: false,
     isTyping: true,
-    messages: [],
+    messages: [
+      {
+        id: "1",
+        content: "Chào bạn!",
+        timestamp: "14:25",
+        isOwn: false,
+        senderName: "Trần Thị B",
+        senderAvatar: "/placeholder.svg?height=28&width=28&text=TB",
+        isRead: true,
+      },
+    ],
   },
   {
     id: "3",
@@ -71,7 +124,26 @@ const initialChats: Chat[] = [
     unreadCount: 0,
     hasStory: true,
     isTyping: false,
-    messages: [],
+    messages: [
+      {
+        id: "1",
+        content: "Bạn có thể giúp tôi không?",
+        timestamp: "14:20",
+        isOwn: false,
+        senderName: "Lê Văn C",
+        senderAvatar: "/placeholder.svg?height=28&width=28&text=LC",
+        isRead: true,
+      },
+      {
+        id: "2",
+        content: "Cảm ơn bạn nhiều",
+        timestamp: "14:22",
+        isOwn: false,
+        senderName: "Lê Văn C",
+        senderAvatar: "/placeholder.svg?height=28&width=28&text=LC",
+        isRead: true,
+      },
+    ],
   },
   {
     id: "4",
@@ -223,10 +295,12 @@ export default function MessagesDropdown() {
   const [chats, setChats] = useState<Chat[]>(initialChats)
   const [openChatWindows, setOpenChatWindows] = useState<string[]>([])
   const [minimizedChats, setMinimizedChats] = useState<string[]>(["8", "10", "11", "12", "9", "7", "6", "5"])
-  const [activeChat, setActiveChat] = useState<string | null>(null)
   const [searchQuery, setSearchQuery] = useState("")
   const [activeFilter, setActiveFilter] = useState("all")
   const [showMessengerSidebar, setShowMessengerSidebar] = useState(false)
+
+  // New state for EnhancedChatBubble
+  const [openChatBubbles, setOpenChatBubbles] = useState<{ [key: string]: { x: number; y: number } }>({})
 
   // Calculate total unread messages
   const totalUnreadMessages = chats.reduce((total, chat) => total + (chat.unreadCount || 0), 0)
@@ -266,15 +340,8 @@ export default function MessagesDropdown() {
     setMinimizedChats((prev) => prev.filter((id) => id !== chatId))
   }
 
-  const handleChatMinimize = (chatId: string) => {
-    setOpenChatWindows((prev) => prev.filter((id) => id !== chatId))
-    if (!minimizedChats.includes(chatId)) {
-      setMinimizedChats((prev) => [...prev, chatId])
-    }
-  }
-
   const handleContactClick = (contactId: string) => {
-    let existingChat = chats.find((chat) => chat.id === contactId || chat.name === contactId)
+    const existingChat = chats.find((chat) => chat.id === contactId || chat.name === contactId)
 
     if (!existingChat) {
       const contact = contacts.find((c) => c.id === contactId || c.name === contactId)
@@ -308,7 +375,11 @@ export default function MessagesDropdown() {
     }
   }
 
-  const handleSendMessage = (chatId: string, message: string, replyTo?: any) => {
+  const handleSendMessage = (chatId: string, message: string, replyTo?: {
+    id: string
+    content: string
+    senderName: string
+  }) => {
     const newMessage = {
       id: Date.now().toString(),
       content: message,
@@ -333,23 +404,50 @@ export default function MessagesDropdown() {
       deliveredAt: new Date().toISOString(),
     }
 
-    // setChats((prevChats) =>
-    //   prevChats.map((chat) =>
-    //     chat.id === chatId
-    //       ? {
-    //         ...chat,
-    //         messages: [...chat.messages, newMessage],
-    //         lastMessage: message,
-    //         timestamp: new Date().toISOString(),
-    //       }
-    //       : chat,
-    //   ),
-    // )
+    setChats((prevChats) =>
+      prevChats.map((chat) =>
+        chat.id === chatId
+          ? {
+            ...chat,
+            messages: [...chat.messages, newMessage],
+            lastMessage: message,
+            timestamp: new Date().toISOString(),
+          }
+          : chat,
+      ),
+    )
   }
 
   const handleChatSelect = (chatId: string) => {
-    setActiveChat(chatId)
     setChats((prevChats) => prevChats.map((chat) => (chat.id === chatId ? { ...chat, unreadCount: 0 } : chat)))
+
+    // Open chat bubble
+    const chat = chats.find(c => c.id === chatId)
+    if (chat) {
+      // Calculate position for the chat bubble (bottom right corner)
+      const bubblePosition = { x: window.innerWidth - 320, y: window.innerHeight - 400 }
+      setOpenChatBubbles(prev => ({
+        ...prev,
+        [chatId]: bubblePosition
+      }))
+    }
+  }
+
+  const handleChatBubbleClose = (chatId: string) => {
+    setOpenChatBubbles(prev => {
+      const newBubbles = { ...prev }
+      delete newBubbles[chatId]
+      return newBubbles
+    })
+  }
+
+  const handleChatBubbleMinimize = (chatId: string) => {
+    // Add to minimized chats
+    if (!minimizedChats.includes(chatId)) {
+      setMinimizedChats(prev => [...prev, chatId])
+    }
+    // Close the bubble
+    handleChatBubbleClose(chatId)
   }
 
   const handleQuickCall = (chatId: string) => {
@@ -597,6 +695,31 @@ export default function MessagesDropdown() {
           <SiderBarChat />
         </div>
       )}
+
+      {/* Enhanced Chat Bubbles */}
+      {Object.entries(openChatBubbles).map(([chatId, position]) => {
+        const chat = chats.find(c => c.id === chatId)
+        if (!chat) return null
+
+        return (
+          <EnhancedChatBubble
+            key={chatId}
+            chat={{
+              id: chat.id,
+              name: chat.name,
+              avatar: chat.avatar,
+              isOnline: chat.isOnline,
+              lastSeen: chat.timestamp,
+              isTyping: chat.isTyping,
+              messages: chat.messages,
+            }}
+            onClose={() => handleChatBubbleClose(chatId)}
+            onMinimize={() => handleChatBubbleMinimize(chatId)}
+            onSendMessage={handleSendMessage}
+            position={position}
+          />
+        )
+      })}
     </>
   )
 }
