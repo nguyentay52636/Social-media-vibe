@@ -113,19 +113,7 @@ export function EnhancedChatBubble({ chat, onClose, onMinimize, onSendMessage, p
         setReplyingTo(message)
     }
 
-    const handleContextMenu = (message: MessageProps, position: { x: number; y: number }) => {
-        setSelectedMessage(message)
-        setContextMenuPosition(position)
-        setShowContextMenu(true)
-    }
 
-    const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const file = e.target.files?.[0]
-        if (file) {
-            // Handle file upload
-            console.log("File selected:", file.name)
-        }
-    }
 
     const handleVoiceRecord = () => {
         setIsRecording(!isRecording)
@@ -180,7 +168,7 @@ export function EnhancedChatBubble({ chat, onClose, onMinimize, onSendMessage, p
                 />
 
                 {/* Hidden file input */}
-                <input ref={fileInputRef} type="file" className="hidden" onChange={handleFileUpload} multiple />
+                <input ref={fileInputRef} type="file" className="hidden" multiple />
             </div>
 
             {/* Context Menu */}
