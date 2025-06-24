@@ -1,5 +1,97 @@
 import type { Post, User, Message, Notification, Story, Event, Comment, FriendRequest } from "@/types"
+ export const playlists = [
+  {
+      id: "1",
+      name: "Nhạc Việt Yêu Thích",
+      cover: "/placeholder.svg?height=200&width=200&text=Vietnamese+Music",
+      trackCount: 25,
+      duration: "1h 45m",
+      isLiked: true,
+  },
+  {
+      id: "2",
+      name: "Chill Vibes",
+      cover: "/placeholder.svg?height=200&width=200&text=Chill+Music",
+      trackCount: 18,
+      duration: "1h 12m",
+      isLiked: false,
+  },
+  {
+      id: "3",
+      name: "Workout Mix",
+      cover: "/placeholder.svg?height=200&width=200&text=Workout+Music",
+      trackCount: 32,
+      duration: "2h 8m",
+      isLiked: true,
+  },
+]
 
+ export const tracks = [
+  {
+      id: "1",
+      title: "Nơi này có anh",
+      artist: "Sơn Tùng M-TP",
+      album: "Sky Tour",
+      duration: "4:32",
+      cover: "/placeholder.svg?height=60&width=60&text=ST",
+      isPlaying: false,
+      isLiked: true,
+  },
+  {
+      id: "2",
+      title: "Chúng ta của hiện tại",
+      artist: "Sơn Tùng M-TP",
+      album: "Sky Tour",
+      duration: "3:45",
+      cover: "/placeholder.svg?height=60&width=60&text=ST",
+      isPlaying: true,
+      isLiked: false,
+  },
+  {
+      id: "3",
+      title: "Anh đã quen với cô đơn",
+      artist: "Soobin Hoàng Sơn",
+      album: "Single",
+      duration: "4:18",
+      cover: "/placeholder.svg?height=60&width=60&text=SHS",
+      isPlaying: false,
+      isLiked: true,
+  },
+  {
+      id: "4",
+      title: "Có chắc yêu là đây",
+      artist: "Sơn Tùng M-TP",
+      album: "Sky Tour",
+      duration: "3:52",
+      cover: "/placeholder.svg?height=60&width=60&text=ST",
+      isPlaying: false,
+      isLiked: false,
+  },
+]
+
+export const recentlyPlayed = [
+  {
+      id: "1",
+      title: "Lạc trôi",
+      artist: "Sơn Tùng M-TP",
+      cover: "/placeholder.svg?height=60&width=60&text=ST",
+      playedAt: "2024-06-08T14:30:00Z",
+  },
+  {
+      id: "2",
+      title: "Muộn rồi mà sao còn",
+      artist: "Sơn Tùng M-TP",
+      cover: "/placeholder.svg?height=60&width=60&text=ST",
+      playedAt: "2024-06-08T13:15:00Z",
+  },
+  {
+      id: "3",
+      title: "Hãy trao cho anh",
+      artist: "Sơn Tùng M-TP",
+      cover: "/placeholder.svg?height=60&width=60&text=ST",
+      playedAt: "2024-06-08T12:45:00Z",
+  },
+]
 // Mock Users
 export const users: User[] = [
   {
