@@ -18,7 +18,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
-import { EnhancedFloatingAvatars } from "@/components/chat/components/EnhancedFloatingAvatars"
+import { EnhancedFloatingAvatars } from "@/components/chat/components/SiderBarChat/Components/EnhancedFloatingAvatars/EnhancedFloatingAvatars"
 
 interface Chat {
   id: string
@@ -64,7 +64,7 @@ const initialChats: Chat[] = [
   {
     id: "1",
     name: "Hoàng Văn E",
-    avatar: "/placeholder.svg?height=48&width=48&text=HE",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=48&h=48&fit=crop&crop=face",
     lastMessage: "Tôi có thể giúp gì cho bạn?",
     timestamp: new Date(Date.now() - 30000).toISOString(),
     isOnline: true,
@@ -78,7 +78,7 @@ const initialChats: Chat[] = [
         timestamp: "14:30",
         isOwn: false,
         senderName: "Hoàng Văn E",
-        senderAvatar: "/placeholder.svg?height=28&width=28&text=HE",
+        senderAvatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=28&h=28&fit=crop&crop=face",
         isRead: true,
       },
       {
@@ -87,7 +87,7 @@ const initialChats: Chat[] = [
         timestamp: "14:31",
         isOwn: false,
         senderName: "Hoàng Văn E",
-        senderAvatar: "/placeholder.svg?height=28&width=28&text=HE",
+        senderAvatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=28&h=28&fit=crop&crop=face",
         isRead: true,
       },
     ],
@@ -95,7 +95,7 @@ const initialChats: Chat[] = [
   {
     id: "2",
     name: "Trần Thị B",
-    avatar: "/placeholder.svg?height=48&width=48&text=TB",
+    avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=48&h=48&fit=crop&crop=face",
     lastMessage: "Chào bạn!",
     timestamp: new Date(Date.now() - 60000).toISOString(),
     isOnline: true,
@@ -109,7 +109,7 @@ const initialChats: Chat[] = [
         timestamp: "14:25",
         isOwn: false,
         senderName: "Trần Thị B",
-        senderAvatar: "/placeholder.svg?height=28&width=28&text=TB",
+        senderAvatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=28&h=28&fit=crop&crop=face",
         isRead: true,
       },
     ],
@@ -117,7 +117,7 @@ const initialChats: Chat[] = [
   {
     id: "3",
     name: "Lê Văn C",
-    avatar: "/placeholder.svg?height=48&width=48&text=LC",
+    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=48&h=48&fit=crop&crop=face",
     lastMessage: "Cảm ơn bạn nhiều",
     timestamp: new Date(Date.now() - 120000).toISOString(),
     isOnline: true,
@@ -131,7 +131,7 @@ const initialChats: Chat[] = [
         timestamp: "14:20",
         isOwn: false,
         senderName: "Lê Văn C",
-        senderAvatar: "/placeholder.svg?height=28&width=28&text=LC",
+        senderAvatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=28&h=28&fit=crop&crop=face",
         isRead: true,
       },
       {
@@ -140,7 +140,7 @@ const initialChats: Chat[] = [
         timestamp: "14:22",
         isOwn: false,
         senderName: "Lê Văn C",
-        senderAvatar: "/placeholder.svg?height=28&width=28&text=LC",
+        senderAvatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=28&h=28&fit=crop&crop=face",
         isRead: true,
       },
     ],
@@ -148,7 +148,7 @@ const initialChats: Chat[] = [
   {
     id: "4",
     name: "Meta AI",
-    avatar: "/placeholder.svg?height=48&width=48&text=AI",
+    avatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=48&h=48&fit=crop&crop=face",
     lastMessage: "Tôi có thể giúp gì cho bạn?",
     timestamp: new Date(Date.now() - 180000).toISOString(),
     isOnline: true,
@@ -160,7 +160,7 @@ const initialChats: Chat[] = [
   {
     id: "5",
     name: "Phạm Thanh",
-    avatar: "/placeholder.svg?height=48&width=48&text=PT",
+    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=48&h=48&fit=crop&crop=face",
     lastMessage: "Chào bạn!",
     timestamp: new Date(Date.now() - 120000).toISOString(),
     isOnline: true,
@@ -172,7 +172,7 @@ const initialChats: Chat[] = [
   {
     id: "6",
     name: "Đặng Yuki",
-    avatar: "/placeholder.svg?height=48&width=48&text=DY",
+    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=48&h=48&fit=crop&crop=face",
     lastMessage: "Cảm ơn bạn nhiều",
     timestamp: new Date(Date.now() - 240000).toISOString(),
     isOnline: true,
@@ -183,8 +183,8 @@ const initialChats: Chat[] = [
   },
   {
     id: "7",
-    name: "Trúc Phương",
-    avatar: "/placeholder.svg?height=48&width=48&text=TP",
+    name: " annonymous",
+    avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=48&h=48&fit=crop&crop=face",
     lastMessage: "Hẹn gặp lại",
     timestamp: new Date(Date.now() - 600000).toISOString(),
     isOnline: false,
@@ -195,8 +195,8 @@ const initialChats: Chat[] = [
   },
   {
     id: "8",
-    name: "Lương Nhật Mai",
-    avatar: "/placeholder.svg?height=48&width=48&text=LM",
+    name: "Ronaldo độ",
+    avatar: "https://images.unsplash.com/photo-1546961329-78bef0414d7c?w=48&h=48&fit=crop&crop=face",
     lastMessage: "Bạn có rảnh không?",
     timestamp: new Date(Date.now() - 1920000).toISOString(),
     isOnline: false,
@@ -208,7 +208,7 @@ const initialChats: Chat[] = [
   {
     id: "9",
     name: "Minh Thắng",
-    avatar: "/placeholder.svg?height=48&width=48&text=MT",
+    avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=48&h=48&fit=crop&crop=face",
     lastMessage: "Đã xem tin nhắn của bạn",
     timestamp: new Date(Date.now() - 3600000).toISOString(),
     isOnline: true,
@@ -220,7 +220,7 @@ const initialChats: Chat[] = [
   {
     id: "10",
     name: "Trần An",
-    avatar: "/placeholder.svg?height=48&width=48&text=TA",
+    avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=48&h=48&fit=crop&crop=face",
     lastMessage: "Bạn đã gửi một ảnh",
     timestamp: new Date(Date.now() - 3600000).toISOString(),
     isOnline: false,
@@ -231,8 +231,8 @@ const initialChats: Chat[] = [
   },
   {
     id: "11",
-    name: "Ngọc Trinh",
-    avatar: "/placeholder.svg?height=48&width=48&text=NT",
+    name: "bà dợ",
+    avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=48&h=48&fit=crop&crop=face",
     lastMessage: "Haha 😂",
     timestamp: new Date(Date.now() - 3600000).toISOString(),
     isOnline: false,
@@ -244,7 +244,7 @@ const initialChats: Chat[] = [
   {
     id: "12",
     name: "Ngọc Quý",
-    avatar: "/placeholder.svg?height=48&width=48&text=NQ",
+    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=48&h=48&fit=crop&crop=face",
     lastMessage: "Được rồi",
     timestamp: new Date(Date.now() - 7200000).toISOString(),
     isOnline: true,
@@ -259,19 +259,19 @@ const contacts = [
   {
     id: "c1",
     name: "Trần Thị B",
-    avatar: "/placeholder.svg?height=32&width=32&text=B",
+    avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=32&h=32&fit=crop&crop=face",
     isOnline: true,
   },
   {
     id: "c2",
     name: "Lê Văn C",
-    avatar: "/placeholder.svg?height=32&width=32&text=C",
+    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face",
     isOnline: true,
   },
   {
     id: "c3",
     name: "Phạm Thị D",
-    avatar: "/placeholder.svg?height=32&width=32&text=D",
+    avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=32&h=32&fit=crop&crop=face",
     isOnline: false,
   },
 ]
@@ -419,7 +419,7 @@ export default function MessagesDropdown() {
   }
 
   const handleChatSelect = (chatId: string) => {
-    setChats((prevChats) => prevChats.map((chat) => (chat.id === chatId ? { ...chat, unreadCount: 0 } : chat)))
+    setChats((prevChats) => prevChats.map((chat) => (chat.id === chatId ? { ...chat } : chat)))
 
     // Open chat bubble
     const chat = chats.find(c => c.id === chatId)
@@ -467,7 +467,7 @@ export default function MessagesDropdown() {
 
     switch (activeFilter) {
       case "unread":
-        return chat.unreadCount && chat.unreadCount > 0
+
       case "groups":
         return chat.name.includes("Nhóm") || chat.name.includes("Group") || chat.isGroup
       default:
@@ -578,7 +578,7 @@ export default function MessagesDropdown() {
                     >
                       <AvatarImage src={chat.avatar} alt={chat.name} />
                       <AvatarFallback className="bg-gray-300 dark:bg-gray-600">
-                        {chat.name[0]}
+                        {/* {chat.name[0]} */}
                       </AvatarFallback>
                     </Avatar>
                     {chat.isOnline && (
@@ -603,7 +603,7 @@ export default function MessagesDropdown() {
                         </p>
                       ) : (
                         <p
-                          className={`text-sm truncate ${chat.unreadCount > 0
+                          className={`text-sm truncate 
                             ? "text-gray-800 dark:text-gray-200 font-medium"
                             : "text-gray-500 dark:text-gray-400"
                             }`}
@@ -616,7 +616,7 @@ export default function MessagesDropdown() {
                           variant="default"
                           className="bg-blue-500 hover:bg-blue-600 text-white rounded-full h-5 min-w-[20px] flex items-center justify-center text-xs p-1"
                         >
-                          {chat.unreadCount}
+
                         </Badge>
                       ) : (
                         <div className="w-3 h-3 rounded-full border-2 border-gray-400 dark:border-gray-500 group-hover:bg-blue-500 group-hover:border-blue-500" />

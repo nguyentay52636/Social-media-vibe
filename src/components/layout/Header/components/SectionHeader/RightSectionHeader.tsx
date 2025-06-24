@@ -2,7 +2,7 @@ import React from 'react'
 import UserMenu from '../MenuDropdown/UserMenu'
 import MenuDropdown from '../MenuDropdown/MenuDropdown'
 import NotificationsDropdown from '../MenuDropdown/NotificationsDropdown'
-import MessagesDropdown from '../MenuDropdown/MessagesDropdown'
+import MessagesDropdown from '../MessagesDropdown/MessagesDropdown'
 import { ThemeToggle } from '@/components/theme-toggle'
 
 export default function RightSectionHeader({ handleLogout }: { handleLogout: () => void }) {

@@ -1107,3 +1107,102 @@ export const savedArticles = [
       readTime: "12 phút đọc",
   },
 ]
+
+export const albums = [
+  {
+      id: "1",
+      name: "Kỷ niệm",
+      coverImage: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80", // Hình ảnh kỷ niệm (người đứng trên núi)
+      count: 124,
+      lastUpdated: "2024-05-15T10:30:00Z",
+  },
+  {
+      id: "2",
+      name: "Du lịch",
+      coverImage: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80", // Hình ảnh phong cảnh du lịch (vịnh, núi)
+      count: 87,
+      lastUpdated: "2024-06-01T14:20:00Z",
+  },
+  {
+      id: "3",
+      name: "Gia đình",
+      coverImage: "https://images.unsplash.com/photo-1566492031773-4f4e44671857?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80", // Hình ảnh gia đình (bố mẹ và con)
+      count: 56,
+      lastUpdated: "2024-04-22T09:15:00Z",
+  },
+  {
+      id: "4",
+      name: "Công việc",
+      coverImage: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80", // Hình ảnh văn phòng, làm việc
+      count: 32,
+      lastUpdated: "2024-05-28T16:45:00Z",
+  },
+];
+
+// Mock photos
+export const photos = [
+  {
+      id: "1",
+      url: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80", // Hoàng hôn tại Vịnh Hạ Long (phong cảnh du lịch)
+      caption: "Hoàng hôn tại Vịnh Hạ Long",
+      date: "2024-06-01T18:30:00Z",
+      likes: 45,
+      albumId: "2",
+  },
+  {
+      id: "2",
+      url: "https://images.unsplash.com/photo-1552566626-52f8b0cf5b67?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80", // Cafe buổi sáng (khung cảnh yên bình)
+      caption: "Cafe buổi sáng",
+      date: "2024-05-28T08:15:00Z",
+      likes: 32,
+      albumId: "1",
+  },
+  {
+      id: "3",
+      url: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80", // Họp team dự án mới (văn phòng)
+      caption: "Họp team dự án mới",
+      date: "2024-05-25T14:20:00Z",
+      likes: 18,
+      albumId: "4",
+  },
+  {
+      id: "4",
+      url: "https://images.unsplash.com/photo-1566492031773-4f4e44671857?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80", // Tiệc sinh nhật em gái (gia đình)
+      caption: "Tiệc sinh nhật em gái",
+      date: "2024-05-20T19:45:00Z",
+      likes: 56,
+      albumId: "3",
+  },
+  {
+      id: "5",
+      url: "https://images.unsplash.com/photo-1506972236264-0b4e7f0e89e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80", // Phố cổ Hội An (du lịch)
+      caption: "Phố cổ Hội An",
+      date: "2024-05-15T16:30:00Z",
+      likes: 72,
+      albumId: "2",
+  },
+  {
+      id: "6",
+      url: "https://images.unsplash.com/photo-1501139083538-0139583c060f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80", // Kỷ niệm ngày tốt nghiệp (sinh viên)
+      caption: "Kỷ niệm ngày tốt nghiệp",
+      date: "2024-05-10T10:00:00Z",
+      likes: 89,
+      albumId: "1",
+  },
+  {
+      id: "7",
+      url: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80", // Buổi họp gia đình (gia đình)
+      caption: "Buổi họp gia đình",
+      date: "2024-05-05T12:15:00Z",
+      likes: 34,
+      albumId: "3",
+  },
+  {
+      id: "8",
+      url: "https://images.unsplash.com/photo-1497366219432-0f5893f14e73?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80", // Presentation dự án (công việc)
+      caption: "Presentation dự án",
+      date: "2024-05-02T15:30:00Z",
+      likes: 27,
+      albumId: "4",
+  },
+];

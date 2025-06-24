@@ -165,16 +165,17 @@ export function EnhancedFloatingAvatars({
                                     onClick={() => onChatRestore(chatId)}
                                     onContextMenu={(e) => handleRightClick(e, chatId)}
                                 >
-                                    <div className="w-14 h-14 rounded-full overflow-hidden border-3 border-gray-700 hover:border-blue-500 transition-colors bg-gray-800 shadow-lg">
-                                        <Avatar className="w-full h-full">
+                                    <div className="w-14 relative h-14 rounded-full overflow-hidden border-3 border-gray-700 hover:border-blue-500 transition-colors bg-gray-800 shadow-lg">
+                                        <Avatar className="w-full h-full ">
                                             <AvatarImage src={chat.avatar || "/placeholder.svg"} alt={chat.name} />
                                             <AvatarFallback className="bg-gray-600 text-white">{chat.name[0]}</AvatarFallback>
                                         </Avatar>
+
                                     </div>
 
                                     {/* Online Status */}
                                     {chat.isOnline && (
-                                        <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-3 border-gray-900 shadow-sm"></div>
+                                        <div className="absolute top-0 z-10! -right-1 w-4 h-4 bg-green-500 rounded-full border-3 border-gray-900 shadow-sm"></div>
                                     )}
 
                                     {/* Typing Indicator */}
@@ -185,11 +186,11 @@ export function EnhancedFloatingAvatars({
                                     )}
 
                                     {/* Unread Badge */}
-                                    {chat.unreadCount && chat.unreadCount > 0 && (
+                                    {/* {chat.unreadCount && chat.unreadCount > 0 && (
                                         <Badge className="absolute -top-2 -right-2 bg-red-500 text-white text-xs min-w-6 h-6 flex items-center justify-center rounded-full font-bold shadow-lg border-2 border-gray-900">
                                             {chat.unreadCount > 99 ? "99+" : chat.unreadCount}
                                         </Badge>
-                                    )}
+                                    )} */}
 
                                     {/* Pin Indicator */}
                                     {chat.isPinned && (
