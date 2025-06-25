@@ -16,7 +16,7 @@ import AlbumCard from '../AlbumCard'
 
 
 
-export default function CardDisplayPhotos({ searchQuery, setSearchQuery, viewMode, setViewMode, selectedAlbum, setSelectedAlbum, albums, photos }: { searchQuery: string, setSearchQuery: (value: string) => void, viewMode: string, setViewMode: (value: string) => void, selectedAlbum: string | null, setSelectedAlbum: (value: string | null) => void, albums: any[], photos: any[] }) {
+export default function CardDisplayPhotos({ searchQuery, setSearchQuery, viewMode, setViewMode, selectedAlbum, setSelectedAlbum, albums, photos }: { searchQuery: string, setSearchQuery: (value: string) => void, viewMode: "grid" | "masonry", setViewMode: (value: "grid" | "masonry") => void, selectedAlbum: string | null, setSelectedAlbum: (value: string | null) => void, albums: any[], photos: any[] }) {
     const filteredPhotos = photos.filter((photo) => {
         const matchesSearch = photo.caption.toLowerCase().includes(searchQuery.toLowerCase())
         const matchesAlbum = selectedAlbum ? photo.albumId === selectedAlbum : true

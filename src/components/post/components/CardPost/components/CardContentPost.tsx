@@ -52,7 +52,7 @@ export default function CardContentPost({ post, user, likesCount, isLiked, setIs
                                 )}
                             >
                                 <Image
-                                    src={image || "/placeholder.svg"}
+                                    src={image}
                                     alt={`Post image ${index + 1}`}
                                     fill
                                     className="object-cover hover:scale-110 transition-transform duration-500"
