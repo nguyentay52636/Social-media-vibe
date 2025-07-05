@@ -1,31 +1,23 @@
 "use client"
 import { useState } from 'react';
 import {
-    MagnifyingGlass,
-    RotatingSquare,
-    RotatingTriangles,
-    Triangle,
-} from 'react-loader-spinner';
+    ClipLoader,
+    PulseLoader,
+    RingLoader,
+    ScaleLoader,
+} from 'react-spinners';
 
 const config = {
-    visible: true,
-    height: '200',
-    width: '200',
+    size: 200,
     color: '#ec4899',
-    wrapperStyle: {},
-    wrapperClass: '',
+    loading: true,
 };
 
 const loaders = [
-    <Triangle {...config} ariaLabel="triangle-loading" />,
-    <RotatingSquare {...config} ariaLabel="" />,
-    <MagnifyingGlass
-        {...config}
-        ariaLabel="magnifying-glass-loading"
-        wrapperClass="magnifying-glass-wrapper"
-        glassColor="#f3e8ff" // Light purple background
-    />,
-    <RotatingTriangles {...config} ariaLabel="rotating-triangles-loading" />,
+    <RingLoader {...config} />,
+    <PulseLoader {...config} size={20} />,
+    <ScaleLoader {...config} />,
+    <ClipLoader {...config} />,
 ];
 
 export default function Loading() {
